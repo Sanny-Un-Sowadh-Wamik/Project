@@ -1,5 +1,6 @@
 <?php
-// if(!empty($_POST['submitted']))
+// if(!empty($_POST['submit']))
+// if (isset($_POST['submit']))
 {
     $name = $_POST['name'];
     $con = $_POST['contact'];
@@ -20,17 +21,20 @@
     $spyear = $_POST['spyear'];
     $sboard = $_POST['sboard'];
     $sres = $_POST['sres'];
-    // $fileName = $_FILES['file'];
+    // $filename = $_FILES["uploadfile"]["name"];
+    
+    // $tempname = $_FILES["uploadfile"]["tmp_name"];
+    // $folder = "upload/".$filename;
+    // move_uploaded_file($folder);
     
     require("fpdf/fpdf.php");
-
     $pdf = new FPDF();
     $pdf->AddPage();
-    // $pdf->Image($fileName,0,0);
-
+    // $pdf->Image($filename,0,0);
+    
     $pdf->SetFont("Arial","",16);
     $pdf->Cell(0,13,"Curriculum Vitae",1,1,'C');
-
+    
     $pdf->Cell(30,12,"Full Name:",0,0);  
     $pdf->Cell(20,12,$name,0,1);  
     $pdf->Cell(30,12,"Contact:",0,0); 
@@ -73,7 +77,7 @@
     $pdf->Cell(20,12,$sres,0,1);  
     
     
-
+    
     $pdf->Output();
 }
 ?>
